@@ -1,0 +1,53 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    volumes:
+      - qdrant_data:/qdrant/storage
+    ports:
+      - "6333:6333"
+    networks:
+      - chat_ia
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama_models:/root/.ollama
+    # Ollama fica na rede do host para ter acesso à internet
+    network_mode: "host" 
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 15s
+      start_period: 20m
+      retries: 5
+
+  app:
+    container_name: streamlit_front
+    build:
+      context: ../
+      dockerfile: ./local/dockerfile/streamlit.Dockerfile
+    volumes:
+      - ./to_ingest:/app/to_ingest
+    environment:
+      - QDRANT_URL=http://qdrant:6333
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    ports:
+      - "8501:8501"
+    depends_on:
+      - qdrant
+      - ollama 
+    networks:
+      - chat_ia
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: sh -c "streamlit run streamlit_app.py"
+
+volumes:
+  qdrant_data:
+  ollama_models:
+
+networks:
+  chat_ia:
+    driver: bridge
