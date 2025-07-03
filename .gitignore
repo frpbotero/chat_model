@@ -1,0 +1,73 @@
+# ## Ambiente Virtual ##
+# Ignora a pasta do ambiente virtual. Nome pode variar (venv, .venv, env, etc.).
+venv/
+.venv/
+env/
+*/venv/
+*/.venv/
+*/env/
+
+# ## Arquivos de Python compilados e caches ##
+# Ignora bytecode e caches gerados pelo Python para acelerar a execução.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ## Arquivos de distribuição / pacotes ##
+# Ignora pastas geradas ao construir um pacote Python para distribuição.
+build/
+dist/
+sdist/
+wheelhouse/
+*.egg-info/
+*.egg
+
+# ## Arquivos de configuração de IDEs e Editores de Código ##
+# Estes arquivos guardam configurações pessoais do seu ambiente de desenvolvimento.
+# Visual Studio Code
+.vscode/
+# JetBrains (PyCharm, IntelliJ, etc.)
+.idea/
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+# Eclipse / PyDev
+.project
+.pydevproject
+.settings/
+
+# ## Arquivos de Testes e Cobertura de Código ##
+# Ignora caches e relatórios gerados por ferramentas de teste.
+.pytest_cache/
+.tox/
+htmlcov/
+.coverage
+.coverage.*
+
+# ## Arquivos de Variáveis de Ambiente ##
+# NUNCA comite arquivos .env que contêm segredos, chaves de API, senhas, etc.
+# O '!' nega a regra, permitindo o commit de um arquivo de exemplo.
+.env
+.env.*
+!.env.example
+
+# ## Arquivos de Sistema Operacional ##
+# Arquivos de metadados gerados pelo sistema.
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+
+# ## Jupyter Notebook ##
+# Checkpoints automáticos de notebooks.
+.ipynb_checkpoints/
+
+# ## Arquivos de Log ##
+# Logs gerados pela aplicação durante a execução.
+*.log
+logs/
+
+# ## Bancos de dados locais ##
+# Exemplo para desenvolvimento com SQLite. Não ignore se for o BD principal.
+*data
