@@ -3,14 +3,7 @@ from agent import agent as chat_agent
 from ingest_pipeline import ingest_file 
 from pathlib import Path
 import os
-# import boto3
 
-
-# ─── Config S3 ───────────────────────────────────────────
-# S3_BUCKET      = "meu-bucket-arquivos"
-# S3_KEY_PREFIX  = "ingested/"           # pasta dentro do bucket
-# s3_client      = boto3.client("s3")    # pega credenciais do ambiente
-# ─────────────────────────────────────────────────────────
 
 st.set_page_config(page_title="Chat IA", page_icon="🤖", layout="wide")
 
